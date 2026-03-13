@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokalteller</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+
+        //Teller for hver vokal 
+        let aCounter = 0;
+        let eCounter = 0;
+        let iCounter = 0;
+        let oCounter = 0;
+        let uCounter = 0;
+        let yCounter = 0;
+        let æCounter = 0;
+        let øCounter = 0;
+        let åCounter = 0;
+
+        //Variabel som lagrer teksten brukeren skriver 
+        let text = ''; 
+
+        //Kjører funksjonen første gang siden lastes 
+        updateView();  
+
+        function updateView() {
+            //Lager HTML som vises på siden
+            document.getElementById('app').innerHTML = /*HTML*/`
+
+            <h2>Vokalteller</h2> 
+
+            <input type="text" id="inputText" placeholder="Skriv en tekst"> 
+
+            <button onclick="getText(document.getElementById('inputText').value)">
+                Tell Vokalter  
+                </button> 
+
+            ${printVars()}
+            `;
+        }
+
+        //Funksjonen som henter teksten og teller vokalene 
+        function getText(inputString) {
+            
+            //lagrer teksten i variablen text 
+            text = inputString;
+
+            //nullstiller alle tellere, slik at de ikke 
+            //fortsetter å telle hvis vi trykker på knappen igjen 
+            
+            aCounter = 0;
+            eCounter = 0;
+            iCounter = 0;
+            oCounter = 0;
+            uCounter = 0;
+            yCounter = 0;
+            æCounter = 0;
+            øCounter = 0;
+            åCounter = 0;
+
+            //for-løkke som går gjennom hele teksten
+            //i starter på 0 og går til lengden an teksten
+                for (let i = 0; i < inputString.length; i++) {
+                
+                    //henter bokstaven på posisjon i
+                    //og gjør den til liten bokstav
+                let letter = inputString[i].toLowerCase(); 
+
+                //sjekker hvilken vokal bokstaven er 
+                if (letter == 'a') {
+                    aCounter++; 
+                } else if (letter == 'e') {
+                    eCounter++; 
+                } else if (letter == 'i') {
+                    iCounter ++; 
+                } else if (letter == 'o') {
+                    oCounter ++;
+                } else if (letter == 'u') {
+                    uCounter ++;
+                } else if (letter == 'y') {
+                    yCounter ++;
+                } else if (letter == 'æ') {
+                    æCounter ++;
+                } else if (letter == 'ø') {
+                    øCounter ++;
+                } else if (letter == 'å') {
+                    åCounter ++; 
+                }
+            }
+                //oppdaterer siden slik at resultatet vises 
+                updateView();
+        }
+    
+        //funksjonen som skriver ut resultatet 
+        function printVars() {
+            let html = '';
+
+            //hvis det finnes tekst 
+            if(text != ''){
+                html = /*HTML*/`
+
+                <h2>${text}</h2> 
+                <ul>
+                <li>A = ${aCounter}</li> 
+                <li>E = ${eCounter}</li> 
+                <li>I = ${iCounter}</li> 
+                <li>O = ${oCounter}</li> 
+                <li>U = ${uCounter}</li> 
+                <li>Y = ${yCounter}</li> 
+                <li>Æ = ${æCounter}</li> 
+                <li>Ø = ${øCounter}</li> 
+                <li>Å = ${åCounter}</li> 
+
+                </ul>
+                `; 
+
+            }
+
+            return html; 
+        }
+    
+    
+
+
+    </script>
+</body>
+</html>

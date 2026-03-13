@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app"></div>
+
+    <script>
+
+        let result = ""; 
+
+        updateView(); 
+
+        function updateView() {
+            document.getElementById("app").innerHTML = /*HTML*/`
+            <h2>Sjekk e-postadresse</h2> 
+
+            <input id="emailInput" type="text" placeholder="Skriv inn e-postadressen din">
+
+            <button onclick="checkEmail()"> 
+                Sjekk
+                </button>
+
+                <h3>${result}</h3> 
+            `; 
+
+        }
+
+        function checkEmail() {
+            let text = document.getElementById("emailInput").value;
+
+            if(isEmail(text)) {
+                result = "Dette er en gyldig e-postadresse";
+
+            } else {
+                result = "Dette er ikke en gyldig e-postadresse";
+            }
+            updateView(); 
+        }
+
+
+        function isEmail(text) {
+
+            if(text.includes("@") && 
+            !text.includes(" ") &&
+            text.indexOf(".") > text.indexOf("@")){
+                return true;
+            }
+                return false; 
+        }
+
+
+    </script>
+</body>
+</html>

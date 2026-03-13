@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--
+    Lag en funksjon som tar input fra brukeren og reverserer teksten ved hjelp av en for-løkke
+    -->
+
+<div id="app"></div>
+
+<script>
+
+    updateView();
+
+    function updateView() {
+        document.getElementById("app").innerHTML = /*HTML*/`
+        <h2>Reverser tekst</h2> 
+        <input type="text" id="inputText" placeholder="Skriv Tekst"> 
+
+        <button onclick="reverseText()">Reverser</button>
+        <div id="result"></div>
+        `; 
+    }
+
+    function reverseText() {
+        let text = document.getElementById("inputText").value;
+        let reversed = ""; 
+
+        //går gjennom teksten baklengs
+        for (let i = text.length -1; i >= 0; i--) {
+            reversed += text[i]; 
+        }
+    document.getElementById("result").innerHTML = reversed; 
+    }
+
+</script>
+
+</body>
+</html>

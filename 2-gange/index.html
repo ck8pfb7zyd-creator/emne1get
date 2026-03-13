@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app"></div>
+
+    <script>
+
+        let tallet = 0;
+        let display = '';
+
+        updateView()
+
+        function updateView() {
+            document.getElementById('app').innerHTML = /*HTML*/ `
+            <button onclick="showToGangen(2)">Vis to gangen</button> 
+            ${display}
+            `
+        }
+
+        function showToGangen(number) {
+        display = toGange(number);
+        updateView(); 
+        }
+
+        function toGange(number) {
+            let stop = 10;
+            let html = ''
+
+            for (let i = 0; i < stop; i++) {
+                tallet += number; 
+                html += `${tallet},`
+            }
+            return html
+        }
+
+    
+   
+
+
+    </script>
+</body>
+</html>

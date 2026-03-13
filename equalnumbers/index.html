@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    Lag en funksjon som generer 2 random tall så lenge tallene er ulike fra hverandre. Når de er like print ut teksten "Equal numbers found" - samt hvilke tall det ble =)
+kan eventuelt også console.log() tallene for hver runde
+OBS: Nettleseren er ikke glad i å oppdatere view mens i en while-loop!
+    -->
+<div id="app"></div>
+
+<script>
+
+    let result = "";
+
+    updateView(); 
+
+    function updateView() {
+        document.getElementById("app").innerHTML = /*HTML*/`
+        <h2>Finn like tall</h2> 
+        
+        <button onclick="findEqualNumbers()">
+            Generer tall
+            </button> 
+
+        <div>${result}</div> 
+        `; 
+    }
+
+    
+
+    function findEqualNumbers() {
+
+        let number1 = -1;
+        let number2 = -2; 
+
+        while(number1 !== number2) {
+            number1 = Math.floor(Math.random() * 100);
+            number2 = Math.floor(Math.random() * 100);
+
+            console.log(number1, number2); 
+        }
+
+        result = `Equal numbers found: ${number1} and ${number2}`;  
+
+        updateView(); 
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    
+    
+    <div id="app"></div>
+    <div class="infoBox">
+  Denne koden tar inn teksten du skriver i feltet, gjør den første bokstaven om til stor bokstav ved å bruke 
+  <code>charAt(0).toUpperCase() + variabel.slice()</code>, 
+</div>
+
+
+    <script>
+        //models
+       let UpdateText = "";
+
+        //views
+        updateView()
+        function updateView(){
+            document.getElementById('app').innerHTML = /*HTML*/`
+            <input id="inputText" placeholder="Skriv in navnet ditt" onchange="updateName(this.value)">
+            <p>Resultat: ${UpdateText}</p>
+
+            `
+        }
+
+        // controller
+
+        function updateName(str){
+            UpdateText = str.charAt(0).toUpperCase() + str.slice(1);
+            updateView()
+           
+        }
+
+        
+
+    </script>
+</body>
+</html>

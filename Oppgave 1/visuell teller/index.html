@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoppeklokke</title>
+
+    <style>
+
+        h3 {
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            color: #333;
+        }
+
+     .clockButton {
+        width: 80px;
+        height: 40px;
+        margin: 5px;
+        border-radius: 20px;
+        border: none;
+        background-color: #4a90e2;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+     }
+
+     .clockButton:hover {
+        background-color: #357abd;
+     }
+
+    .clockDisplay {
+        width: 120px;
+        height: 60px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        border: 2px solid #4a90e2;
+        margin: 15px auto; 
+        
+    }
+
+    .roundList {
+        border: 1px solid black;
+        margin-left: 50px;
+        font-size: x-small; 
+    }
+
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <button class="clockButton" onclick="startTimer()">Start Timer!</button>
+    <button class="clockButton" onclick="pauseTimer()">Pause timer</button>
+    <button class="clockButton" onclick="stopAll()">Stopp timer</button><br>
+
+    <div id="app" class ="clockDisplay">0 sek</div> </div>
+    <h3>RUNDETIDER</h3>
+    <ul id="lastRound" class="roundList"></ul>
+
+</div>
+<script>
+    
+    const app = document.getElementById('app');
+    const roundTime = document.getElementById('lastRound');
+    let seconds = 0;
+    var timer; 
+
+    function startTimer() {
+        if (!timer) {
+        timer = setInterval(countSeconds, 1000);
+        }
+    }
+
+    function countSeconds() {
+        seconds++;
+        app.innerHTML = seconds + "sek";
+    }
+
+    function pauseTimer() {
+        const pauseTime = seconds; 
+        clearInterval(timer);
+        timer = null;
+
+        if (pauseTime > 0) { 
+            roundTime.innerHTML += `<li>${seconds} sekunder</li>`;
+        }
+         
+    }
+
+    function stopAll() {
+        clearInterval(timer);
+        timer = null;
+        seconds = 0;
+        app.innerHTML = "0 sek";
+        roundTime.innerHTML = ""; 
+    }
+
+</script>
+    
+</body>
+</html>
